@@ -1,0 +1,50 @@
+﻿@model Examen.Models.INT_Clientes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>INT_Clientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cliNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliDApellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliDApellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliDireccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliDireccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INT_Tipocliente.Tipocliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INT_Tipocliente.Tipocliente)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cliRut }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

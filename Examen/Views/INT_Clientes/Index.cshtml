@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Examen.Models.INT_Clientes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Crear")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cliNombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliDApellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliDireccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INT_Tipocliente.Tipocliente)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliNombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliDApellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliDireccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INT_Tipocliente.Tipocliente)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.cliRut }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.cliRut }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.cliRut })
+        </td>
+    </tr>
+}
+
+</table>

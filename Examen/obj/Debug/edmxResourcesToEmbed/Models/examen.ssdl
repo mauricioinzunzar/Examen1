@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="examenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="INT_Clientes">
+    <Key>
+      <PropertyRef Name="cliRut" />
+    </Key>
+    <Property Name="cliRut" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cliNombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="cliDApellido" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="cliDireccion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Tipocliente" Type="int" />
+  </EntityType>
+  <EntityType Name="INT_pedido">
+    <Key>
+      <PropertyRef Name="pedidoId" />
+    </Key>
+    <Property Name="pedidoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cliente" Type="int" />
+    <Property Name="Producto" Type="int" />
+  </EntityType>
+  <EntityType Name="INT_Tipocliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipocliente" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="INT_Venta">
+    <Key>
+      <PropertyRef Name="ventId" />
+    </Key>
+    <Property Name="ventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ventNombre" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ventCodigo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ventFamilia" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ventPrecio" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ventDescuento" Type="int" Nullable="false" />
+    <Property Name="ventDescripcion" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__INT_Clien__Tipoc__145C0A3F">
+    <End Role="INT_Tipocliente" Type="Self.INT_Tipocliente" Multiplicity="0..1" />
+    <End Role="INT_Clientes" Type="Self.INT_Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INT_Tipocliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="INT_Clientes">
+        <PropertyRef Name="Tipocliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INT_pedid__Clien__173876EA">
+    <End Role="INT_Clientes" Type="Self.INT_Clientes" Multiplicity="0..1" />
+    <End Role="INT_pedido" Type="Self.INT_pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INT_Clientes">
+        <PropertyRef Name="cliRut" />
+      </Principal>
+      <Dependent Role="INT_pedido">
+        <PropertyRef Name="Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INT_pedid__Produ__182C9B23">
+    <End Role="INT_Venta" Type="Self.INT_Venta" Multiplicity="0..1" />
+    <End Role="INT_pedido" Type="Self.INT_pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INT_Venta">
+        <PropertyRef Name="ventId" />
+      </Principal>
+      <Dependent Role="INT_pedido">
+        <PropertyRef Name="Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="examenModelStoreContainer">
+    <EntitySet Name="INT_Clientes" EntityType="Self.INT_Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INT_pedido" EntityType="Self.INT_pedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INT_Tipocliente" EntityType="Self.INT_Tipocliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INT_Venta" EntityType="Self.INT_Venta" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__INT_Clien__Tipoc__145C0A3F" Association="Self.FK__INT_Clien__Tipoc__145C0A3F">
+      <End Role="INT_Tipocliente" EntitySet="INT_Tipocliente" />
+      <End Role="INT_Clientes" EntitySet="INT_Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INT_pedid__Clien__173876EA" Association="Self.FK__INT_pedid__Clien__173876EA">
+      <End Role="INT_Clientes" EntitySet="INT_Clientes" />
+      <End Role="INT_pedido" EntitySet="INT_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INT_pedid__Produ__182C9B23" Association="Self.FK__INT_pedid__Produ__182C9B23">
+      <End Role="INT_Venta" EntitySet="INT_Venta" />
+      <End Role="INT_pedido" EntitySet="INT_pedido" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

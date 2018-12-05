@@ -1,0 +1,34 @@
+﻿@model Examen.Models.INT_pedido
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>INT_pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.INT_Clientes.cliNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INT_Clientes.cliNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INT_Venta.ventNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INT_Venta.ventNombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pedidoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

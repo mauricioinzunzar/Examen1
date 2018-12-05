@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="examenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="INT_Clientes">
+    <Key>
+      <PropertyRef Name="cliRut" />
+    </Key>
+    <Property Name="cliRut" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliNombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cliDApellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliDireccion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tipocliente" Type="Int32" />
+    <NavigationProperty Name="INT_Tipocliente" Relationship="Self.FK__INT_Clien__Tipoc__145C0A3F" FromRole="INT_Clientes" ToRole="INT_Tipocliente" />
+    <NavigationProperty Name="INT_pedido" Relationship="Self.FK__INT_pedid__Clien__173876EA" FromRole="INT_Clientes" ToRole="INT_pedido" />
+  </EntityType>
+  <EntityType Name="INT_pedido">
+    <Key>
+      <PropertyRef Name="pedidoId" />
+    </Key>
+    <Property Name="pedidoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cliente" Type="Int32" />
+    <Property Name="Producto" Type="Int32" />
+    <NavigationProperty Name="INT_Clientes" Relationship="Self.FK__INT_pedid__Clien__173876EA" FromRole="INT_pedido" ToRole="INT_Clientes" />
+    <NavigationProperty Name="INT_Venta" Relationship="Self.FK__INT_pedid__Produ__182C9B23" FromRole="INT_pedido" ToRole="INT_Venta" />
+  </EntityType>
+  <EntityType Name="INT_Tipocliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipocliente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="INT_Clientes" Relationship="Self.FK__INT_Clien__Tipoc__145C0A3F" FromRole="INT_Tipocliente" ToRole="INT_Clientes" />
+  </EntityType>
+  <EntityType Name="INT_Venta">
+    <Key>
+      <PropertyRef Name="ventId" />
+    </Key>
+    <Property Name="ventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ventNombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ventCodigo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ventFamilia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ventPrecio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ventDescuento" Type="Int32" Nullable="false" />
+    <Property Name="ventDescripcion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="INT_pedido" Relationship="Self.FK__INT_pedid__Produ__182C9B23" FromRole="INT_Venta" ToRole="INT_pedido" />
+  </EntityType>
+  <Association Name="FK__INT_Clien__Tipoc__145C0A3F">
+    <End Role="INT_Tipocliente" Type="Self.INT_Tipocliente" Multiplicity="0..1" />
+    <End Role="INT_Clientes" Type="Self.INT_Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INT_Tipocliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="INT_Clientes">
+        <PropertyRef Name="Tipocliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INT_pedid__Clien__173876EA">
+    <End Role="INT_Clientes" Type="Self.INT_Clientes" Multiplicity="0..1" />
+    <End Role="INT_pedido" Type="Self.INT_pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INT_Clientes">
+        <PropertyRef Name="cliRut" />
+      </Principal>
+      <Dependent Role="INT_pedido">
+        <PropertyRef Name="Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INT_pedid__Produ__182C9B23">
+    <End Role="INT_Venta" Type="Self.INT_Venta" Multiplicity="0..1" />
+    <End Role="INT_pedido" Type="Self.INT_pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INT_Venta">
+        <PropertyRef Name="ventId" />
+      </Principal>
+      <Dependent Role="INT_pedido">
+        <PropertyRef Name="Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="examenEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="INT_Clientes" EntityType="Self.INT_Clientes" />
+    <EntitySet Name="INT_pedido" EntityType="Self.INT_pedido" />
+    <EntitySet Name="INT_Tipocliente" EntityType="Self.INT_Tipocliente" />
+    <EntitySet Name="INT_Venta" EntityType="Self.INT_Venta" />
+    <AssociationSet Name="FK__INT_Clien__Tipoc__145C0A3F" Association="Self.FK__INT_Clien__Tipoc__145C0A3F">
+      <End Role="INT_Tipocliente" EntitySet="INT_Tipocliente" />
+      <End Role="INT_Clientes" EntitySet="INT_Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INT_pedid__Clien__173876EA" Association="Self.FK__INT_pedid__Clien__173876EA">
+      <End Role="INT_Clientes" EntitySet="INT_Clientes" />
+      <End Role="INT_pedido" EntitySet="INT_pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INT_pedid__Produ__182C9B23" Association="Self.FK__INT_pedid__Produ__182C9B23">
+      <End Role="INT_Venta" EntitySet="INT_Venta" />
+      <End Role="INT_pedido" EntitySet="INT_pedido" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

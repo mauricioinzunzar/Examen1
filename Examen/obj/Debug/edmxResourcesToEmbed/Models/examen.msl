@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="examenModelStoreContainer" CdmEntityContainer="examenEntities">
+    <EntitySetMapping Name="INT_Clientes">
+      <EntityTypeMapping TypeName="examenModel.INT_Clientes">
+        <MappingFragment StoreEntitySet="INT_Clientes">
+          <ScalarProperty Name="cliRut" ColumnName="cliRut" />
+          <ScalarProperty Name="cliNombre" ColumnName="cliNombre" />
+          <ScalarProperty Name="cliDApellido" ColumnName="cliDApellido" />
+          <ScalarProperty Name="cliDireccion" ColumnName="cliDireccion" />
+          <ScalarProperty Name="Tipocliente" ColumnName="Tipocliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INT_pedido">
+      <EntityTypeMapping TypeName="examenModel.INT_pedido">
+        <MappingFragment StoreEntitySet="INT_pedido">
+          <ScalarProperty Name="pedidoId" ColumnName="pedidoId" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Producto" ColumnName="Producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INT_Tipocliente">
+      <EntityTypeMapping TypeName="examenModel.INT_Tipocliente">
+        <MappingFragment StoreEntitySet="INT_Tipocliente">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tipocliente" ColumnName="Tipocliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INT_Venta">
+      <EntityTypeMapping TypeName="examenModel.INT_Venta">
+        <MappingFragment StoreEntitySet="INT_Venta">
+          <ScalarProperty Name="ventId" ColumnName="ventId" />
+          <ScalarProperty Name="ventNombre" ColumnName="ventNombre" />
+          <ScalarProperty Name="ventCodigo" ColumnName="ventCodigo" />
+          <ScalarProperty Name="ventFamilia" ColumnName="ventFamilia" />
+          <ScalarProperty Name="ventPrecio" ColumnName="ventPrecio" />
+          <ScalarProperty Name="ventDescuento" ColumnName="ventDescuento" />
+          <ScalarProperty Name="ventDescripcion" ColumnName="ventDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

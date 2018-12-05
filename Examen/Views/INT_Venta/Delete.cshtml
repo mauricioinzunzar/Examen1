@@ -1,0 +1,72 @@
+﻿@model Examen.Models.INT_Venta
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>INT_Venta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ventNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ventNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ventCodigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ventCodigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ventFamilia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ventFamilia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ventPrecio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ventPrecio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ventDescuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ventDescuento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ventDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ventDescripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
